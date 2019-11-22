@@ -1,0 +1,1 @@
+from kwic.word_matching_trie import WordMatchingTrie
