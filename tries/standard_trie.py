@@ -2,7 +2,12 @@
    
     Problem 2: Standard Trie
 
-    <Please insert your data and the honor code here.>
+    Course:      Data Structures and Algorithms for CL III - WS1920
+    Assignment:  lab 2, exercise 2
+    Author:      Jinghua Xu
+    Description: an implementation of a standard tree class
+ 
+    Honor Code:  I pledge that this program represents my own work.
 """
 
 class StandardTrie:
@@ -36,9 +41,23 @@ class StandardTrie:
         value : object
             The value associated to the string.
         """
-    
-        # FIXME your code goes here
-
+        # current node
+        node = self._root
+        # node.value = None
+        for char in string:
+            found_in_child = False
+            for child in node.children:
+                if child.key == char:
+                    found_in_child = True
+                    node = child
+                    break
+            if not found_in_child:
+                new_node = self.Node()
+                new_node._key = char
+                node.children.update(new_node)
+                node = new_node
+        # node.value = string?
+        node.value = value
 
     def find(self, pattern):
         """ Finds the value associated with the pattern.
@@ -54,8 +73,25 @@ class StandardTrie:
             The value associated with the pattern, if the pattern is part of the
          trie. Returns False is the pattern is not in the trie.   
         """
-
-        # FIXME your code goes here
+        # current node
+        node = self._root
+        #search in an empty trie?
+        if not node._children:
+            print('search in an empty trie')
+            return False
+        for char in pattern:
+            char_not_found = True
+            for child in node._children:
+                if child.char == char:
+                    char_not_found = False
+                    node = child
+                    break
+            if char_not_found:
+                return False
+        if node._value:
+            return False
+        else:
+            return node._value
 
 
     def node_size(self):
@@ -116,3 +152,10 @@ class StandardTrie:
 
         def __str__(self):
             return self._node_repr()
+
+def main():
+    trie = StandardTrie({'bear', 'bell', 'bid', 'bull', 'buy', 'sell', 'stock', 'stop'})
+    print(trie)
+
+if __name__ == "__main__":
+    main()
