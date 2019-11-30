@@ -48,7 +48,7 @@ class SpellChecker:
         else:
             for item in self._lexicon:
                 dist = self.min_edit_distance(word, item)
-                if dist == 1 or dist == 2:
+                if dist == 1:
                     spellings.append(item)
 
         return spellings
@@ -83,7 +83,7 @@ class SpellChecker:
                 up = distance[i][j-1] + 1
                 diagonal = distance[i-1][j-1]
                 if source[i-1] != target[j-1]:
-                    diagonal += 2
+                    diagonal += 1
                 distance[i][j] = min(left, up, diagonal)
 
         return distance[n][m]

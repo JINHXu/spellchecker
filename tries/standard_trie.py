@@ -56,7 +56,6 @@ class StandardTrie:
                 new_node._key = char
                 node.children.update(new_node)
                 node = new_node
-        # node.value = string?
         node.value = value
 
     def find(self, pattern):
