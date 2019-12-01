@@ -131,6 +131,7 @@ class StandardTrie:
         def word_size(self):
             """ Computes how many words are in the subtree rooted at this node."""
             size = 1 if self.value else 0
+            # where does this values() function come from?!
             for child in self.children.values():
                 size += child.word_size()
             return size
