@@ -123,9 +123,9 @@ in the tables corresponding to each current path recursively for each of the
 child nodes. In the example this means continuing building the tables for the
 path starting with `b` and for the path starting with `s`.
 
-Note that at any one point we will only require information from the last row
+__Note that at any one point we will only require information from the last row
 of the table D of the parent node to be able to compute the next row of D for
-each of the child nodes.
+each of the child nodes.__
 
 Such an algorithm immediately discards the paths in the trie that do not lead to
 good solutions - e.g. in the example trie formed from `{bear, bell, bid, bull, buy, sell,`
