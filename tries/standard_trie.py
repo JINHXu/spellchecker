@@ -43,7 +43,6 @@ class StandardTrie:
         """
         # current node
         node = self._root
-        # node.value = None
         for char in string:
             found_in_child = False
             for child in node.children:
@@ -53,10 +52,10 @@ class StandardTrie:
                     break
             if not found_in_child:
                 new_node = self.Node()
-                new_node._key = char
-                node.children.update(new_node)
+                new_node.key = char
+                node.children[new_node] = new_node
                 node = new_node
-        node.value = value
+        node._value = value
 
     def find(self, pattern):
         """ Finds the value associated with the pattern.
@@ -74,20 +73,23 @@ class StandardTrie:
         """
         # current node
         node = self._root
+        
         #search in an empty trie?
         if not node._children:
             print('search in an empty trie')
             return False
+
         for char in pattern:
             char_not_found = True
             for child in node._children:
-                if child.char == char:
+                if child.key == char:
                     char_not_found = False
                     node = child
                     break
             if char_not_found:
                 return False
-        if node._value:
+
+        if not node._value:
             return False
         else:
             return node._value
@@ -131,7 +133,6 @@ class StandardTrie:
         def word_size(self):
             """ Computes how many words are in the subtree rooted at this node."""
             size = 1 if self.value else 0
-            # where does this values() function come from?!
             for child in self.children.values():
                 size += child.word_size()
             return size
@@ -140,6 +141,7 @@ class StandardTrie:
             """ Computes how many nodes are in the subtree rooted at this node."""
             size = 1
             for child in self.children.values():
+
                 size += child.node_size()
             return size
 
@@ -154,8 +156,9 @@ class StandardTrie:
             return self._node_repr()
 
 def main():
-    trie = StandardTrie({'bear', 'bell', 'bid', 'bull', 'buy', 'sell', 'stock', 'stop'})
+    trie = StandardTrie(['bull', 'buy', 'bid', 'bell', 'bear', 'stop', 'stock', 'sell'])
     print(trie)
+    print(trie.find('buy'))
 
 if __name__ == "__main__":
     main()
