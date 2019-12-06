@@ -72,7 +72,7 @@ class SpellChecker:
             distance[i][0] = distance[i-1][0] + 1
         # initialize first row
         for j in range(1, m+1):
-            distance[0][j] = distance[0][j-1] +1
+            distance[0][j] = distance[0][j-1] + 1
 
         #recurrence relation
         for i in range(1,n+1):
@@ -86,15 +86,14 @@ class SpellChecker:
                     diagonal += 1
                 distance[i][j] = min(left, up, diagonal)
 
-        return distance[n][m]
-
+        return min(distance[n])
 
 #min_edit_diatnce() works
+'''
 def main():
         tmp = SpellChecker({1})
-        # 50 : no correct spelling identified for misspelling  carusell . The correct spelling was  carousel .
-        print(tmp.min_edit_distance('carusell','carousel'))
+        print(tmp.min_edit_distance('s','bell'))
 
 if __name__ == "__main__":
         main()
-    
+    '''
