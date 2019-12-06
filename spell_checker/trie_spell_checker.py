@@ -21,64 +21,55 @@ class TrieSpellChecker:
     def lexicon(self):
         return self._lexicon
     
+    # starting from root node and first row in table
     def check(self, word):
         
         spellings = []
+        root_node = self._lexicon.root
 
-        if self.lexicon.find(word):
-            spellings.append(word)
+        # build the first row
+        current_row = range(len(word) + 1)
 
-        else:
-            # go through each paths(from root node to leaf nodes) in the trie
-            # a BFS search
-            node = self.lexicon.root
-            for child in node.children:
-                if 
-                
+        # recursively checking children
+        for child in root_node.children:
+            self.recursiveCheck(child, child.key, word, current_row, spellings)
+
         return spellings
-        
-    # the variant of min_edit_distance: takes a row and returns a row
-    def min_edit_distance(self, source, target):
 
-        n = len(source)
-        m = len(target)
-        # create a distance matrix distance[n+1, m+1], temporarily silled in with 'None'
-        distance = []
-        for i in range(n+1):
-            distance.append([])
-            for j in range(m+1):
-                distance[i].append(0)
+    # a helper function: recursively checking each path from root node to leaf nodes
+    def recursiveCheck(self, node, char, word, previous_row, spellings):
+
+        # initial set up building current row
+        num_cols = len(word) + 1
+        current_row = [previous_row[0] + 1]
+
+        # building current row
+        for col in range(1, num_cols):
+
+            left = current_row[col - 1] + 1
+            up = previous_row[col] + 1
+            diagonal = previous_row[col - 1] 
             
-        # initialization: the zeroth row and col is the distance from the empty string
-        distance[0][0] = 0
-
-        # initiallize first col
-        for i in range(1, n+1):
-            distance[i][0] = distance[i-1][0] + 1
-        # initialize first row
-        for j in range(1, m+1):
-            distance[0][j] = distance[0][j-1] +1
-
-        #recurrence relation
-        for i in range(1,n+1):
-            for j in range(1, m+1):
-                # cell to the left in table
-                left = distance[i-1][j] + 1
-                # cell above in table
-                up = distance[i][j-1] + 1
-                diagonal = distance[i-1][j-1]
-                if source[i-1] != target[j-1]:
-                    diagonal += 1
-                distance[i][j] = min(left, up, diagonal)
-
-        return min(distance[n])
-
-
-#min_edit_diatnce() works
-def main():
-        tmp = SpellChecker({1})
-        print(tmp.min_edit_distance('b','bell'))
-
-if __name__ == "__main__":
-        main()
+            if word[col - 1] != char:
+                diagonal += 1  
+ 
+            current_row.append(min(left, up, diagonal))
     
+        # distance does not reach threshold(1) and reaching leaf node: an accaptable spelling in trie => add the word in trie to spellings list
+        if current_row[-1] <= 1 and node.value != None:
+            spellings.append(node.value)
+
+        # distance does not reach threshold(1) and have not reached leaf node: continue recursive search
+        if min(current_row) <= 1:
+            for child in node.children:
+                self.recursiveCheck(child, child.key, word, current_row, spellings)
+
+
+
+
+
+
+
+
+
+ 

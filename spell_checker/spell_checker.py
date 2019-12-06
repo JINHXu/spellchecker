@@ -77,16 +77,17 @@ class SpellChecker:
         #recurrence relation
         for i in range(1,n+1):
             for j in range(1, m+1):
-                # cell to the left in table
+                # cell to the left in table plus one
                 left = distance[i-1][j] + 1
-                # cell above in table
+                # cell above in table plus one
                 up = distance[i][j-1] + 1
+                # diagnoal value plus cost for substitution
                 diagonal = distance[i-1][j-1]
                 if source[i-1] != target[j-1]:
                     diagonal += 1
                 distance[i][j] = min(left, up, diagonal)
 
-        return min(distance[n])
+        return distance[n][m]
 
 #min_edit_diatnce() works
 '''
