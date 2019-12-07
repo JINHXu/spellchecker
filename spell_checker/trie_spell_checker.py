@@ -25,18 +25,25 @@ class TrieSpellChecker:
     def check(self, word):
         
         spellings = []
-        root_node = self._lexicon.root
 
-        # build the first row
-        current_row = range(len(word) + 1)
+        if self._lexicon.find(word):
+            spellings.append(word)
 
-        # recursively checking children
-        for child in root_node.children:
-            self.recursiveCheck(child, child.key, word, current_row, spellings)
+        else:
+
+            root_node = self._lexicon.root
+
+
+            # build the first row
+            current_row = range(len(word) + 1)
+
+            # recursively checking children
+            for child in root_node.children:
+                self.recursiveCheck(child, child.key, word, current_row, spellings)
 
         return spellings
 
-    # a helper function: recursively checking each path from root node to leaf nodes
+        # a helper function: recursively checking each path from root node to leaf nodes
     def recursiveCheck(self, node, char, word, previous_row, spellings):
 
         # initial set up building current row
