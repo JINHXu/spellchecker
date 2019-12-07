@@ -25,5 +25,4 @@ class TestWordMatchingTrie(unittest.TestCase):
         self.assertFalse(self.wm_trie.find("bea"))
 
     def test_not_found(self):
-        self.assertFalse(self.wm_trie.find("babel"))            
-        
+        self.assertFalse(self.wm_trie.find("babel"))   

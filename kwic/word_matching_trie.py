@@ -31,10 +31,12 @@ class WordMatchingTrie(StandardTrie):
         words_in_text = text.split(' ')
         value = 0
         for word in words_in_text:
-            #removing puncts at the end of each string
+            #removing puncts at the end of each string(if there is any)
             if word[-1] in puncts:
-                word = word[:-1]
-            self.add(word, value)
+                new_word = word[:-1]
+                self.add(new_word, value)
+            else:
+                self.add(word, value)
             value += len(word) + 1
 
 
@@ -77,13 +79,4 @@ class WordMatchingTrie(StandardTrie):
             self._children = {}
             self._key = None
             self._value = []
-
-def main():
-    trie = StandardTrie("see a bear? sell stock! see a bull? buy stock! bid stock! bid stock! hear the bell? stop!")
-    print(trie)
-
-if __name__ == "__main__":
-    main()
-
-
 
