@@ -14,7 +14,6 @@
 
 import unittest
 
-
 from tries import StandardTrie
 
 class TestStandardTrie(unittest.TestCase):

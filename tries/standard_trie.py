@@ -5,7 +5,7 @@
     Course:      Data Structures and Algorithms for CL III - WS1920
     Assignment:  lab 2, exercise 2
     Author:      Jinghua Xu
-    Description: an implementation of a standard tree class
+    Description: an implementation of a standard trie class
  
     Honor Code:  I pledge that this program represents my own work.
 """

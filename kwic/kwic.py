@@ -4,7 +4,11 @@
    
     Problem 4: Keyword in Context
 
-    <Please insert your data and the honor code here.>
+    Assignment:  lab 2, exercise 4
+    Author:      Jinghua Xu
+    Description: an interface for visualizing keywords in context using tries
+ 
+    Honor Code:  I pledge that this program represents my own work.
 """
 
 import argparse
