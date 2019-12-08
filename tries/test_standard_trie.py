@@ -21,11 +21,10 @@ class TestStandardTrie(unittest.TestCase):
     def setUp(self):
         lexicon = ['bear', 'bell', 'bid', 'bull', 'buy', 'sell', 'stock', 'stop']
         self.test_trie = StandardTrie(lexicon)
-    # an additional test for add() function? This seems pretty sufficient to me since every test for find() is based on the trie built through calling add().
-    # testing add() by inspecting the children of each node?
-
-
-    # multiple tests for find?
+    
+    # refered to the style of test_word_matching_trie, no additional tests for add(), which is involed in the trie building process, therefore add() will be tested through testing find()
+    # multiple tests for find
+    
     def test_find_bear(self):
         self.assertEqual(self.test_trie.find('bear'), 'bear')
 

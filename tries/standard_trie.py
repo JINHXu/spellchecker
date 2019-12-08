@@ -154,11 +154,3 @@ class StandardTrie:
 
         def __str__(self):
             return self._node_repr()
-
-def main():
-    trie = StandardTrie(['bull', 'buy', 'bid', 'bell', 'bear', 'stop', 'stock', 'sell'])
-    print(trie)
-    print(trie.find('buy'))
-
-if __name__ == "__main__":
-    main()
