@@ -25,7 +25,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     text = ''
-    # text processing
+    # read from file
     wrapper = args.file
     lines = wrapper.readlines()
     for line in lines:
@@ -35,9 +35,9 @@ if __name__ == "__main__":
     # trie to store text
     trie = WordMatchingTrie(text)
 
-    # The program should keep asking for a new keyword until the user terminates the loop by presses enter without inputting any characters.
     keyword = args.keyword
 
+    # The program should keep asking for a new keyword until the user terminates the loop by presses enter without inputting any characters.
     while True:
         values = trie.find(keyword)  
         # query the text for the keyword
@@ -46,12 +46,12 @@ if __name__ == "__main__":
             values = values[:args.max_count]
             for idx in values:
                 # args.w chars(including spaces) to the left of keyword
-                context_to_left = text[idx-args.window_size: idx]
+                context_to_left = text[idx-args.window_size: idx+1]
                 # args.w chars(including spaces) to the right of keyword
-                context_to_right = text[idx+1: idx+args.window_size]
+                context_to_right = text[idx+1+len(keyword): idx+args.window_size+len(keyword)+1]
                 # In cases where the contexts are smaller than window_sz
                 if len(context_to_left) < args.window_size:
-                    #justified output
+                    #justifying output
                     num_spaces = args.max_count - len(context_to_left)
                     print(' '*num_spaces + context_to_left + ' '*4 + keyword + ' '*4 + context_to_right)
                 else:
@@ -60,7 +60,7 @@ if __name__ == "__main__":
         else:
             print('Keyword not found in text.')
         
-        nextcommand = input("Enter new keyword to search or press Enter to quit:")
+        nextcommand = input("Enter new keyword to search or press Enter to terminate:")
 
         if nextcommand == '':
             break
@@ -69,4 +69,4 @@ if __name__ == "__main__":
 
         
             
-        
+    
