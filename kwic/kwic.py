@@ -50,10 +50,12 @@ if __name__ == "__main__":
                 context_to_left = text[idx-w_sz: idx]
                 # args.w chars(including spaces) to the right of keyword
                 context_to_right = text[idx+len_keyword: idx+len_keyword+w_sz]
+
                 # left justification of suceeding context(optional line of code, depending on requirement, which is vague here)
                 # context_to_right = context_to_right.lstrip()
                 # right justification of preceding context(optional line of code, depending on requirement, which is vague here)
                 # context_to_left = context_to_left.rstrip()
+
                 # In cases where the contexts are smaller than window_sz
                 if len(context_to_left) < args.window_size:
                     #right justification of preceding context
@@ -65,7 +67,7 @@ if __name__ == "__main__":
         else:
             print('Keyword not found in text.')
         
-        nextcommand = input("Enter new keyword to search or press Enter to terminate:")
+        nextcommand = input("Enter new keyword(bare word: with no quotes surrounded) to search or press Enter to terminate:")
 
         if nextcommand == '':
             break
