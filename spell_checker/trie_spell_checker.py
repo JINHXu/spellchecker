@@ -23,12 +23,26 @@ class TrieSpellChecker:
     
     # starting from root node and first row in table
     def check(self, word):
+        """ Checks if a given string word is correctly spelled (i.e. if it is in the trie spell checker's lexicon). If the string is not in the lexicon, then it returns a list of potentially correct spellings of the word from the trie spell checker's lexicon.(with a trie)
+
+        Parameters
+        ----------
+        word : string
+            The string to be spell-checked.
+
+        Returns
+        -------
+        spellings : list
+            A list of correct/possible spellings of word. 
+        """
         
         spellings = []
 
+        # word in lexicon
         if self._lexicon.find(word):
             spellings.append(word)
 
+        # word not in lexicon
         else:
 
             root_node = self._lexicon.root
@@ -43,14 +57,35 @@ class TrieSpellChecker:
 
         return spellings
 
-        # a helper function: recursively checking each path from root node to leaf nodes
     def recursiveCheck(self, node, char, word, previous_row, spellings):
+        """ A helper function: the recursive call of check() function
+
+        Parameters
+        ----------
+        self : TrieSpellChecker
+            self to call this method
+        node : Node
+            Current node
+        
+        char : String
+            Key of current node
+
+        previous_row : list
+            List stores previous row of the table(minimum edit distance matrix)
+        
+        spellings : list
+            A list of correct/possible spellings of word, will be updated here
+        
+        Returns:
+            None
+        
+        """
 
         # initial set up building current row
         num_cols = len(word) + 1
         current_row = [previous_row[0] + 1]
 
-        # building current row
+        # building current row with the information from previous row
         for col in range(1, num_cols):
 
             left = current_row[col - 1] + 1
@@ -62,7 +97,7 @@ class TrieSpellChecker:
  
             current_row.append(min(left, up, diagonal))
     
-        # distance does not reach threshold(1) and reaching leaf node: an accaptable spelling in trie => add the word in trie to spellings list
+        # distance does not reach threshold(1) and have reached leaf node: an acceptable spelling in trie => add the word in trie to spellings list
         if current_row[-1] <= 1 and node.value != None:
             spellings.append(node.value)
 
