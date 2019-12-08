@@ -33,6 +33,7 @@ class WordMatchingTrie(StandardTrie):
         for word in words_in_text:
             # handling empty strings resulted by double spaces in text
             if word == '':
+                value += 1
                 continue
             #removing puncts at the end of each string(if there is any)
             if word[-1] in puncts:
