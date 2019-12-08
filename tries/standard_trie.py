@@ -10,12 +10,13 @@
     Honor Code:  I pledge that this program represents my own work.
 """
 
+
 class StandardTrie:
     """Representation of a standard trie where words are stored as node values."""
 
     def __init__(self, strings):
         """ Constructor for StandardTrie. Builds the trie based on the supplied string collection.
-        
+
         Parameters
         ----------
         strings : iterable
@@ -33,7 +34,7 @@ class StandardTrie:
     def add(self, string, value):
         """ Adds a new (string, value) pair to the trie. The value should be 
         added to the node having the last letter of the string as a key.
-        
+
         Parameters
         __________
         string : string
@@ -59,12 +60,12 @@ class StandardTrie:
 
     def find(self, pattern):
         """ Finds the value associated with the pattern.
-        
+
         Parameters
         ----------
         pattern : string
             The string pattern to search in the trie.
-        
+
         Returns
         -------
         value : object
@@ -73,8 +74,8 @@ class StandardTrie:
         """
         # current node
         node = self._root
-        
-        #search in an empty trie?
+
+        # search in an empty trie?
         if not node._children:
             print('search in an empty trie')
             return False
@@ -93,7 +94,6 @@ class StandardTrie:
             return False
         else:
             return node._value
-
 
     def node_size(self):
         return self.root.node_size()
@@ -124,7 +124,7 @@ class StandardTrie:
 
         @key.setter
         def key(self, new_key):
-            self._key = new_key 
+            self._key = new_key
 
         @property
         def value(self):
@@ -147,10 +147,11 @@ class StandardTrie:
 
         def _node_repr(self, level=0):
             """ Returns a string representation of the subtree rooted at this node, indented according to its level."""
-            rep = "{}{}:{}\n".format("\t" * level, repr(self.key), repr(self.value))
+            rep = "{}{}:{}\n".format(
+                "\t" * level, repr(self.key), repr(self.value))
             for v in self.children.values():
                 rep += v._node_repr(level + 1)
-            return rep     
+            return rep
 
         def __str__(self):
             return self._node_repr()

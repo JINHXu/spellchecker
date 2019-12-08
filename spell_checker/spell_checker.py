@@ -10,12 +10,13 @@
     Honor Code:  I pledge that this program represents my own work.
 """
 
+
 class SpellChecker:
     """Class representing a spellchecker with a given lexicon."""
 
     def __init__(self, lexicon):
         """ Initializes the spell checker class by saving the user-provided lexicon.
-        
+
         Parameters
         ----------
         lexicon : iterable
@@ -77,7 +78,7 @@ class SpellChecker:
             distance.append([])
             for j in range(m+1):
                 distance[i].append(0)
-            
+
         # initialization: the zeroth row and col is the distance from the empty string
         distance[0][0] = 0
 
@@ -88,8 +89,8 @@ class SpellChecker:
         for j in range(1, m+1):
             distance[0][j] = distance[0][j-1] + 1
 
-        #recurrence relation
-        for i in range(1,n+1):
+        # recurrence relation
+        for i in range(1, n+1):
             for j in range(1, m+1):
                 # cell to the left in table plus one(cost)
                 left = distance[i-1][j] + 1
@@ -104,4 +105,3 @@ class SpellChecker:
 
         dist = distance[n][m]
         return dist
-

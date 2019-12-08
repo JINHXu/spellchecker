@@ -17,10 +17,11 @@ import argparse
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="KWIC app")
-    parser.add_argument("-f", "--file", type=argparse.FileType(mode="r", encoding="utf-8"), default="kwic/data/2701-0.txt")
+    parser.add_argument("-f", "--file", type=argparse.FileType(mode="r",
+                                                               encoding="utf-8"), default="kwic/data/2701-0.txt")
     parser.add_argument("-w", "--window-size", type=int, default=50)
     parser.add_argument("-m", "--max-count", type=int, default=10)
-    # key word to search 
+    # key word to search
     parser.add_argument("-k", "--keyword", type=str, default='')
     args = parser.parse_args()
 
@@ -39,8 +40,8 @@ if __name__ == "__main__":
 
     # The program should keep asking for a new keyword until the user terminates the loop by presses enter without inputting any characters.
     while True:
-        values = trie.find(keyword) 
-        len_keyword = len(keyword) 
+        values = trie.find(keyword)
+        len_keyword = len(keyword)
         # query the text for the keyword
         if values:
             # it should print the args.max_count contexts for the word
@@ -58,22 +59,21 @@ if __name__ == "__main__":
 
                 # In cases where the contexts are smaller than window_sz
                 if len(context_to_left) < args.window_size:
-                    #right justification of preceding context
+                    # right justification of preceding context
                     num_spaces = args.max_count - len(context_to_left)
-                    print(' '*num_spaces + context_to_left + ' '*4 + keyword + ' '*4 + context_to_right)
+                    print(' '*num_spaces + context_to_left + ' ' *
+                          4 + keyword + ' '*4 + context_to_right)
                 else:
-                    print(context_to_left + ' '*4 + keyword + ' '*4 + context_to_right)
+                    print(context_to_left + ' '*4 +
+                          keyword + ' '*4 + context_to_right)
 
         else:
             print('Keyword not found in text.')
-        
-        nextcommand = input("Enter new keyword(bare word: with no quotes surrounded) to search or press Enter to terminate:")
+
+        nextcommand = input(
+            "Enter new keyword(bare word: with no quotes surrounded) to search or press Enter to terminate:")
 
         if nextcommand == '':
             break
         else:
             keyword = nextcommand
-
-        
-            
-    

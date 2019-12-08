@@ -4,6 +4,7 @@ import unittest
 
 from spell_checker import TrieSpellChecker
 
+
 class TestTrieSpellChecker(unittest.TestCase):
 
     def setUp(self):
@@ -12,8 +13,9 @@ class TestTrieSpellChecker(unittest.TestCase):
         self.schecker = None
 
         with open(self.VOCAB_PATH, mode='r', encoding='utf8') as in_f:
-            self.schecker = TrieSpellChecker([word.strip() for word in in_f.readlines()])
-    
+            self.schecker = TrieSpellChecker(
+                [word.strip() for word in in_f.readlines()])
+
     def test_vocab(self):
         self.assertEqual(len(self.schecker.lexicon), 50166)
 
@@ -35,11 +37,12 @@ class TestTrieSpellChecker(unittest.TestCase):
                     candidates = self.schecker.check(misspell)
                     if correct in candidates:
                         identif += 1
-                        print("for misspelling ", misspell, " identified ", correct, " correctly. The list was ", candidates)
+                        print("for misspelling ", misspell, " identified ",
+                              correct, " correctly. The list was ", candidates)
                     else:
-                        print("no correct spelling identified for misspelling ", misspell, ". The correct spelling was ", correct, ".")
+                        print("no correct spelling identified for misspelling ",
+                              misspell, ". The correct spelling was ", correct, ".")
 
                     total += 1
         print("Identified %d correct spells out of %d." % (identif, total))
         self.assertEqual(identif, 673)
-        

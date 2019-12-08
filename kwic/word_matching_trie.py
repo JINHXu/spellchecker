@@ -12,12 +12,13 @@
 import string
 from tries import StandardTrie
 
+
 class WordMatchingTrie(StandardTrie):
     """Representation of a word-matching trie."""
 
     def __init__(self, text):
         """ Constructor for WordMatchingTrie. Builds the trie based on the supplied text.
-        
+
         Parameters
         ----------
         text : string
@@ -35,7 +36,7 @@ class WordMatchingTrie(StandardTrie):
             if word == '':
                 value += 1
                 continue
-            #removing puncts at the end of each string(if there is any)
+            # removing puncts at the end of each string(if there is any)
             if word[-1] in puncts:
                 # remove puncts at the end
                 new_word = word[:-1]
@@ -44,14 +45,13 @@ class WordMatchingTrie(StandardTrie):
                 self.add(word, value)
             value += len(word) + 1
 
-
     def add(self, string, value):
         """ Adds a new (string, value) pair to the trie. The value should be 
         the start index of the string in the text. It should be added to the
         node having the last letter of the string as a key. If a word appears
         multiple times in the text, the trie should store a list of the start
         indices as values.
-        
+
         Parameters
         __________
         string : string
@@ -84,4 +84,3 @@ class WordMatchingTrie(StandardTrie):
             self._children = {}
             self._key = None
             self._value = []
-

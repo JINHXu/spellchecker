@@ -5,6 +5,7 @@ import unittest
 
 from spell_checker import SpellChecker
 
+
 class TestSpellChecker(unittest.TestCase):
 
     def setUp(self):
@@ -31,11 +32,11 @@ class TestSpellChecker(unittest.TestCase):
                     total += 1
                     if correct in candidates:
                         identif += 1
-                        print(total, ": for misspelling ", misspell, " identified ", correct, " correctly. The list was ", candidates)
+                        print(total, ": for misspelling ", misspell, " identified ",
+                              correct, " correctly. The list was ", candidates)
                     else:
-                        print(total, ": no correct spelling identified for misspelling ", misspell, ". The correct spelling was ", correct, ".")
-
+                        print(total, ": no correct spelling identified for misspelling ",
+                              misspell, ". The correct spelling was ", correct, ".")
 
         print("Identified %d correct spells out of %d." % (identif, total))
         self.assertEqual(identif, 31)
-        

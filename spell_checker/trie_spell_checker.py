@@ -11,16 +11,16 @@
 
 from tries.standard_trie import StandardTrie
 
+
 class TrieSpellChecker:
 
     def __init__(self, lexicon):
         self._lexicon = StandardTrie(lexicon)
 
-
     @property
     def lexicon(self):
         return self._lexicon
-    
+
     # starting from root node and first row in table
     def check(self, word):
         """ Checks if a given string word is correctly spelled (i.e. if it is in the trie spell checker's lexicon). If the string is not in the lexicon, then it returns a list of potentially correct spellings of the word from the trie spell checker's lexicon.(with a trie)
@@ -35,7 +35,7 @@ class TrieSpellChecker:
         spellings : list
             A list of correct/possible spellings of word. 
         """
-        
+
         spellings = []
 
         # word in lexicon
@@ -47,13 +47,13 @@ class TrieSpellChecker:
 
             root_node = self._lexicon.root
 
-
             # build the first row
             current_row = range(len(word) + 1)
 
             # recursively checking children
             for child in root_node.children:
-                self.recursiveCheck(child, child.key, word, current_row, spellings)
+                self.recursiveCheck(child, child.key, word,
+                                    current_row, spellings)
 
         return spellings
 
@@ -66,19 +66,19 @@ class TrieSpellChecker:
             self to call this method
         node : Node
             Current node
-        
+
         char : String
             Key of current node
 
         previous_row : list
             List stores previous row of the table(minimum edit distance matrix)
-        
+
         spellings : list
             A list of correct/possible spellings of word, will be updated here
-        
+
         Returns:
             None
-        
+
         """
 
         # initial set up building current row
@@ -90,13 +90,13 @@ class TrieSpellChecker:
 
             left = current_row[col - 1] + 1
             up = previous_row[col] + 1
-            diagonal = previous_row[col - 1] 
-            
+            diagonal = previous_row[col - 1]
+
             if word[col - 1] != char:
-                diagonal += 1  
- 
+                diagonal += 1
+
             current_row.append(min(left, up, diagonal))
-    
+
         # distance does not reach threshold(1) and have reached leaf node: an acceptable spelling in trie => add the word in trie to spellings list
         if current_row[-1] <= 1 and node.value != None:
             spellings.append(node.value)
@@ -104,14 +104,5 @@ class TrieSpellChecker:
         # distance does not reach threshold(1) and have not reached leaf node: continue recursive search
         if min(current_row) <= 1:
             for child in node.children:
-                self.recursiveCheck(child, child.key, word, current_row, spellings)
-
-
-
-
-
-
-
-
-
- 
+                self.recursiveCheck(child, child.key, word,
+                                    current_row, spellings)
