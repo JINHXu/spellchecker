@@ -41,10 +41,10 @@ class SpellChecker:
             A list of correct/possible spellings of word. 
         """
         spellings = []
-
+        # word in lexicon
         if word in self._lexicon:
             spellings.append(word)
-
+        # word not in lexicon
         else:
             for item in self._lexicon:
                 dist = self.min_edit_distance(word, item)
@@ -77,24 +77,16 @@ class SpellChecker:
         #recurrence relation
         for i in range(1,n+1):
             for j in range(1, m+1):
-                # cell to the left in table plus one
+                # cell to the left in table plus one(cost)
                 left = distance[i-1][j] + 1
-                # cell above in table plus one
+                # cell above in table plus one(cost)
                 up = distance[i][j-1] + 1
                 # diagnoal value plus cost for substitution
                 diagonal = distance[i-1][j-1]
                 if source[i-1] != target[j-1]:
                     diagonal += 1
+                    # fill in the cell
                 distance[i][j] = min(left, up, diagonal)
 
         return distance[n][m]
 
-#min_edit_diatnce() works
-'''
-def main():
-        tmp = SpellChecker({1})
-        print(tmp.min_edit_distance('s','bell'))
-
-if __name__ == "__main__":
-        main()
-    '''
