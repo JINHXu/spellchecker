@@ -31,8 +31,12 @@ class WordMatchingTrie(StandardTrie):
         words_in_text = text.split(' ')
         value = 0
         for word in words_in_text:
+            # handling empty strings resulted by double spaces in text
+            if word == '':
+                continue
             #removing puncts at the end of each string(if there is any)
             if word[-1] in puncts:
+                # remove puncts at the end
                 new_word = word[:-1]
                 self.add(new_word, value)
             else:
