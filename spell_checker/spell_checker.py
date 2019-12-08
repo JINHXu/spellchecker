@@ -54,7 +54,21 @@ class SpellChecker:
         return spellings
 
     def min_edit_distance(self, source, target):
+        """A helper function caluculating minimum edit distance between source and target.(a variant of Levinstein Distance: cost of deletion/substitution/insertion is one)
 
+        Parameters
+        ----------
+        source : string
+            The string to be spellchecked.
+        target : string
+            The string item in lexicon to be compared to source.
+
+        Returns
+        -------
+        dist : int
+            The minimum edit distance between source and target.
+        """
+        dist = 0
         n = len(source)
         m = len(target)
         # create a distance matrix distance[n+1, m+1], temporarily silled in with 'None'
@@ -88,5 +102,6 @@ class SpellChecker:
                     # fill in the cell
                 distance[i][j] = min(left, up, diagonal)
 
-        return distance[n][m]
+        dist = distance[n][m]
+        return dist
 
