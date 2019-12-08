@@ -188,8 +188,8 @@ max count, and proceeds to query the text for the keyword. If the word is part
 of the text, it should print the `args.max_count` contexts for the word.
 Otherwise, it should print a message informing the  user that the word
 was not found in the text.
-The program should keep asking for a new keyword until the user terminates the
-loop by presses enter without inputting any characters.
+__The program should keep asking for a new keyword until the user terminates the
+loop by presses enter without inputting any characters.__
 
 By default the script will search through Herman Melville's "Moby Dick" text,
 provided in `kwic/data/2701-0.txt`, but you can change the text via the arguments.
