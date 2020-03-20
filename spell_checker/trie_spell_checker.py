@@ -52,12 +52,12 @@ class TrieSpellChecker:
 
             # recursively checking children
             for child in root_node.children:
-                self.recursiveCheck(child, child.key, word,
+                self._recursiveCheck(child, child.key, word,
                                     current_row, spellings)
 
         return spellings
 
-    def recursiveCheck(self, node, char, word, previous_row, spellings):
+    def _recursiveCheck(self, node, char, word, previous_row, spellings):
         """ A helper function: the recursive call of check() function
 
         Parameters
@@ -104,5 +104,5 @@ class TrieSpellChecker:
         # distance does not reach threshold(1) and have not reached leaf node: continue recursive search
         if min(current_row) <= 1:
             for child in node.children:
-                self.recursiveCheck(child, child.key, word,
+                self._recursiveCheck(child, child.key, word,
                                     current_row, spellings)

@@ -24,8 +24,19 @@ class TestStandardTrie(unittest.TestCase):
                    'buy', 'sell', 'stock', 'stop']
         self.test_trie = StandardTrie(lexicon)
 
-    # refered to the style of test_word_matching_trie, no additional tests for add(), which is involed in the trie building process, therefore add() will be tested through testing find()
-    # multiple tests for find
+    def test_add(self):
+        words = set(["bell"])
+        trie = StandardTrie(words)
+
+        self.assertEqual(len(trie), 1)
+        self.assertEqual(trie.node_size(), 5)
+
+    def test_add_2(self):
+        words = set(["stop", "stock"])
+        trie = StandardTrie(words)
+
+        self.assertEqual(len(trie), 2)
+        self.assertEqual(trie.node_size(), 7)
 
     def test_find_bear(self):
         self.assertEqual(self.test_trie.find('bear'), 'bear')
