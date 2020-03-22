@@ -1,9 +1,5 @@
-""" Data Structures and Algorithms for CL III, WS 2019-2020, Assignment 2
-   
-    Problem 3: Spell checker using a trie.
+""" Spell checker using a trie.
 
-    Course:      Data Structures and Algorithms for CL III - WS1920
-    Assignment:  lab 2, exercise 3
     Author:      Jinghua Xu
     Description: A spell checker implemented with trie, i.e. lexicon will be stored in a trie instead of a set.
     Honor Code:  I pledge that this program represents my own work.
@@ -53,7 +49,7 @@ class TrieSpellChecker:
             # recursively checking children
             for child in root_node.children:
                 self._recursiveCheck(child, child.key, word,
-                                    current_row, spellings)
+                                     current_row, spellings)
 
         return spellings
 
@@ -105,4 +101,4 @@ class TrieSpellChecker:
         if min(current_row) <= 1:
             for child in node.children:
                 self._recursiveCheck(child, child.key, word,
-                                    current_row, spellings)
+                                     current_row, spellings)

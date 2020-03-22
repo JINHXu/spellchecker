@@ -1,9 +1,5 @@
-""" Data Structures and Algorithms for CL III, WS 2019-2020, Assignment 2
-   
-    Problem 2: Standard Trie
+""" Standard Trie
 
-    Course:      Data Structures and Algorithms for CL III - WS1920
-    Assignment:  lab 2, exercise 2
     Author:      Jinghua Xu
     Description: an implementation of a standard trie class
  

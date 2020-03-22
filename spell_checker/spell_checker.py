@@ -1,12 +1,8 @@
-""" Data Structures and Algorithms for CL III, WS 2019-2020, Assignment 2
-   
-    Problem 1: Spell checker.
+""" Spell checker.
 
-    Course:      Data Structures and Algorithms for CL III - WS1920
-    Assignment:  lab 2, exercise 1
     Author:      Jinghua Xu
     Description: A spell-checker class that stores a lexicon of words lexicon, in a Python set, and implements a method, check(word), which performs a spell check on the string word with respect to the words in lexicon.
- 
+    
     Honor Code:  I pledge that this program represents my own work.
 """
 

@@ -1,10 +1,7 @@
 #!/usr/bin/env/python3
 
-""" Data Structures and Algorithms for CL III, WS 2019-2020, Assignment 2
-   
-    Problem 4: Keyword in Context
+""" Keyword in Context
 
-    Assignment:  lab 2, exercise 4
     Author:      Jinghua Xu
     Description: an interface for visualizing keywords in context using tries
  

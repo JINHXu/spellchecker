@@ -1,14 +1,9 @@
 #!/usr/bin/env/python3
 
-""" Data Structures and Algorithms for CL III, WS 2019-2020, Assignment 2
-   
-    Problem 2: Standard Trie unit test
+""" Standard Trie unit test
 
-    Course:      Data Structures and Algorithms for CL III - WS1920
-    Assignment:  lab 2, exercise 2
     Author:      Jinghua Xu
     Description: unit test for StandardTrie
- 
     Honor Code:  I pledge that this program represents my own work.
 """
 
