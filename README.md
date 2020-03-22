@@ -1,14 +1,5 @@
-# Assignment 2: Algorithms on Strings
 
-You need to follow the link on the [private course
-page](https://github.com/dsacl3-2019/dsacl3) to work on your repository. The
-deadline for this assignment is **Monday, December 9th, 8:00 CET**. 
-
-You are strongly recommended to use git properly/productively: commit every 'unit' of work (e.g., individual exercises) and bug fixes separately. You do not need to worry about the mistakes in the earlier commits. Your assignment will be evaluated based only on the final commit before the deadline. Also, don't forget to add your information and the honor code to each file that you modify.
-
-This assignment covers string distance measures and tries, and has four subproblems.
-
-## 1. Spell checking
+## 1. Spell checking(without trie)
 
 Write a spell-checker class that stores a lexicon of words `lexicon`, in a
 Python `set`, and implements a method, `check(word)`, which performs a spell check
@@ -52,7 +43,7 @@ Implement the methods of the `SpellChecker` class as detailed above such that
 all the tests in `test_spell_checker.py` pass. You can run these tests from the commandline using
 `python3 -m unittest spell_checker.test_spell_checker`.
 
-## 2. Implement a standard trie
+## 2. A standard trie class
 
 The lexicon of a spell checker can also be represented using a standard trie
 instead of a set. 
