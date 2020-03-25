@@ -1,8 +1,8 @@
 
 ## 1. Spell checking(without trie)
 
-Write a spell-checker class that stores a lexicon of words `lexicon`, in a
-Python `set`, and implements a method, `check(word)`, which performs a spell check
+A spell-checker class that stores a lexicon of words `lexicon`, in a
+Python `set`, and a method, `check(word)`, which performs a spell check
 on the string `word` with respect to the words in `lexicon`. 
 
 If `word` is in `lexicon`, then the call to `check(word)` should return a list containing
@@ -13,12 +13,9 @@ word in `lexicon` that might be a correct spelling of `word`. Your program shoul
 be able to handle common ways that `word` might be a misspelling of a word in
 `lexicon`: inserting a single character in between two adjacent characters in a
 word, deleting a single character from a word, and replacing a single character
-in a word with another character. Your implementation should be based on the
-minimum edit distance algorithm.
+in a word with another character.( based on the
+minimum edit distance algorithm.)
 
-The directory `spell_checker` contains the starter code for this problem. Your
-task is to complete the`SpellChecker` class by filling in its constructor,
-`__init__()`, and the `check()` method.
 
 A test suite for `SpellChecker` is also available in `test_spell_checker.py`. The
 tests create a spell checker using a custom 
@@ -39,8 +36,7 @@ misspelled words.
 A sample of 50 words have been randomly chosen to serve as
 test words for this exercise - `TELEMARKDAT_sample.643`.
 
-Implement the methods of the `SpellChecker` class as detailed above such that
-all the tests in `test_spell_checker.py` pass. You can run these tests from the commandline using
+Run these tests from the commandline using
 `python3 -m unittest spell_checker.test_spell_checker`.
 
 ## 2. A standard trie class
@@ -55,22 +51,11 @@ class, `Node`, used to represent the nodes of the trie. A node has a `key` and a
 child nodes called `children`. The `StandardTrie` constructor builds the trie
 by adding, one by one, the strings from a given string collection.
 
-Your task is to complete the `StandardTrie` class with:
+`StandardTrie` class is with:
 - the `add()` method for inserting a (`string`, `value`) pair in the trie, 
 - the `find()` method for finding the `value` associated with a `string` pattern.
 
-Your goal is to implement a trie which can be used to store a lexicon, so you
-should test your implementation using a small set of words (you could
-use examples from the lecture slides - `{bear, bell, bid, bull, buy, sell,`
-`stock, stop}`). Write tests for the `StandardTrie` class separately, in a file
-called `test_standard_trie.py`, using Python's `unittest` framework.
-
-You do not need to use a `$` symbol for this implementation - if you
-add the full string as a value only to the nodes that have as key the last character of
-the string.
-
-To help with debugging, the starter code includes code for printing the contents
-of a trie. A call to `print(trie)` will pretty-print the nodes and values in the
+A call to `print(trie)` will pretty-print the nodes and values in the
 trie using tab-based level indentation.
 
 A standard trie for the example above looks like this:
@@ -84,7 +69,7 @@ efficient in terms of the time required to find the list of possible spellings
 for a word given a particular lexicon.
 
 We can make the search more efficient by using a trie instead of a set to
-represent the lexicon. Implement a new class, `TrieSpellChecker`, similar to the
+represent the lexicon. A new class, `TrieSpellChecker`, similar to the
 `SpellChecker` class from problem 1.
 
 The new class implements the same interface as before:
@@ -93,7 +78,7 @@ The new class implements the same interface as before:
  a standard trie, as implemented at step 2
 - `check(self, word)` for finding the spellings of a string `word`
 
-Your `check(word)` function should still be based on the minimum edit distance
+`check(word)` function is still based on the minimum edit distance
 algorithm. However, instead of computing the distance between the string `word` and
 each word of the trie directly, we will compute the distances incrementally,
 according to the letters available in the trie. 
@@ -137,12 +122,9 @@ should be computed very fast.
 
 ## 4. Keyword in Context Interface (KWIC)
 
-Build an interface for visualizing keywords in context using tries. The
+An interface for visualizing keywords in context using tries. The
 code in the `kwic` directory should serve as the starting point. 
 
-As a first step, you need to modify the standard trie from exercise 2 such that for
-each word in a text it saves as a value a list of start indices where the
-word appears in the text. 
 
 For example the text `test try test!` should be represented by the following
 trie:
@@ -153,23 +135,13 @@ When adding words to the trie you should strip any punctuation that occurs at
 the end of individual words in the text. You should not, however, remove the
 punctuation or any stop words from the original text. 
 
-You do not need to use a `$` symbol for this implementation -  if you only add
-values to the list for words that appear in your text.
 
-You can reuse much of the `StandardTrie` implementation - so you are provided
-with the skeleton of the `WordMatchingTrie` class which inherits from
-`StandardTrie`. You only need to update the constructor of the class, the
-`add()` method and the constructor of the nested `Node` class.
-
-The tests in `test_word_matching_trie.py` should help ensure that your new
-implementation works as expected.
-
-In a second step, you are asked to print up to `max_count` occurrences of a
+In a second step, print up to `max_count` occurrences of a
 keyword in a text, and up to `window_sz` characters to the left and up to `window_sz`
 to the right of the keyword. Make sure to remove any newlines from the text -
 this will ensure that the contexts are displayed in a consistent way. 
 
-Also, to make it easier to spot the keyword, you should separate it from the
+Also, to make it easier to spot the keyword, separate it from the
 preceding and succeeding context with four spaces. In cases where the contexts are
 smaller than `window_sz` you should right-justify the preceding context and
 left-justify the succeeding context, by padding them with spaces as needed.
@@ -185,8 +157,6 @@ loop by presses enter without inputting any characters.__
 By default the script will search through Herman Melville's "Moby Dick" text,
 provided in `kwic/data/2701-0.txt`, but you can change the text via the arguments.
 
-Your task is to extend `kwic.py` and add support for finding a keyword and its
-context using the `WordMatchingTrie`.
 
-You can run the kwic interface using the command `python3 -m kwic.kwic`.
+Run the kwic interface using the command `python3 -m kwic.kwic`.
 
