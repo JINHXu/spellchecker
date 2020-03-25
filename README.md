@@ -115,12 +115,7 @@ The branches that lead to possible spellings of `s` will have a value <= 1 on
 the last column of the current row. This means that path matched the searched
 `word` almost completely - other than a deletion, substitution or insertion.
 
-You are provided with tests for the new class in `test_trie_spell_checker.py`.
-Note that the new implementation should run significantly faster than the
-previous one, such that corrections for the 1084 misspelled words in `TELEMARKDAT.643`
-should be computed very fast.
-
-## 4. Keyword in Context Interface (KWIC)
+ ## 4. Keyword in Context Interface (KWIC)
 
 An interface for visualizing keywords in context using tries. The
 code in the `kwic` directory should serve as the starting point. 
@@ -143,7 +138,7 @@ this will ensure that the contexts are displayed in a consistent way.
 
 Also, to make it easier to spot the keyword, separate it from the
 preceding and succeeding context with four spaces. In cases where the contexts are
-smaller than `window_sz` you should right-justify the preceding context and
+smaller than `window_sz`, right-justify the preceding context and
 left-justify the succeeding context, by padding them with spaces as needed.
 
 `kwic.py` is a script which asks for a file to search for, a window size and a
