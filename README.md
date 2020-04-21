@@ -1,3 +1,5 @@
+# Spellchecking and Key word searching in large context
+A spell checker can be trie-based or not. A key word sercher can be effetient implemented with trie.
 
 ## 1. Spell checking(without trie)
 
